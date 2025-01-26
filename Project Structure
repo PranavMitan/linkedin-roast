@@ -1,0 +1,13 @@
+linkedin-post-roaster/
+├── manifest.json
+├── background.js
+├── content.js
+├── config.js
+├── services/
+│   └── ai-service.js
+├── popup/
+│   ├── popup.html
+│   ├── popup.css
+│   └── popup.js
+└── assets/
+    └── icon.png 

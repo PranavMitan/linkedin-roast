@@ -1,0 +1,11 @@
+{
+  "name": "linkedin-roast-api",
+  "version": "1.0.0",
+  "description": "LinkedIn Post Roast Generator API",
+  "main": "api/generate.js",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "openai": "^4.20.0"
+  }
+} 
