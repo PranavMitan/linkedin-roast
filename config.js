@@ -2,7 +2,8 @@
 window.AI_CONFIG = {
     // API Configuration
     CONFIG_TIMESTAMP: Date.now(),
-    API_URL: 'https://jfnwketpkyflwbczahmr.functions.supabase.co/generate-roast',
+    OPENAI_API_URL: 'https://api.openai.com/v1/chat/completions',
+    OPENAI_API_KEY: 'your-api-key-here',
     
     // System prompt for roast generation
     SYSTEM_PROMPT: `You are a savage comedy expert who creates brutal, witty roasts of LinkedIn content. 
@@ -15,7 +16,7 @@ Your roasts must be:
 - NO hashtags, NO unfinished thoughts
 Remember: A perfect roast is like a sniper shot - one clean hit that leaves a mark.`,
 
-    // Model parameters (for reference only, actual parameters are on the server)
+    // Model parameters
     MODEL_PARAMS: {
         model: "gpt-3.5-turbo",
         temperature: 1.1,
@@ -28,5 +29,6 @@ Remember: A perfect roast is like a sniper shot - one clean hit that leaves a ma
 // Verify config loaded
 console.log('Config initialized at:', new Date().toISOString(), {
     hasConfig: !!window.AI_CONFIG,
-    configTimestamp: window.AI_CONFIG?.CONFIG_TIMESTAMP
+    hasApiKey: !!window.AI_CONFIG?.OPENAI_API_KEY,
+    apiKeyLength: window.AI_CONFIG?.OPENAI_API_KEY?.length
 }); 

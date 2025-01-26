@@ -5,7 +5,8 @@ class AIService {
         this.cache = new Map();
         console.log('Config loaded:', {
             hasConfig: !!this.config,
-            apiUrl: this.config?.API_URL
+            hasApiKey: !!this.config?.OPENAI_API_KEY,
+            apiKeyLength: this.config?.OPENAI_API_KEY?.length
         });
         console.log('=== AIService Constructor End ===');
     }
@@ -22,37 +23,46 @@ class AIService {
                 throw new Error('Empty post content');
             }
 
-            console.log('Making API request to:', this.config.API_URL);
+            if (!this.config?.OPENAI_API_KEY) {
+                throw new Error('OpenAI API key not configured');
+            }
 
-            // Make API request to Supabase Edge Function
-            const response = await fetch(this.config.API_URL, {
+            // Make API request to OpenAI
+            const response = await fetch(this.config.OPENAI_API_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.config.OPENAI_API_KEY}`
                 },
                 body: JSON.stringify({
-                    content: postText
+                    ...this.config.MODEL_PARAMS,
+                    messages: [
+                        {
+                            role: "system",
+                            content: this.config.SYSTEM_PROMPT
+                        },
+                        {
+                            role: "user",
+                            content: `Roast this LinkedIn post: "${postText}"`
+                        }
+                    ]
                 })
             });
 
             if (!response.ok) {
                 const errorText = await response.text();
-                console.error('API Error:', {
+                console.error('OpenAI API Error:', {
                     status: response.status,
                     statusText: response.statusText,
                     body: errorText
                 });
-                throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                throw new Error(`OpenAI API Error: ${response.status} ${response.statusText}`);
             }
 
             const result = await response.json();
-
-            if (!result.roast) {
-                throw new Error('Invalid response format');
-            }
+            const roast = result.choices[0].message.content.trim();
 
             // Cache and return the roast
-            const roast = result.roast.trim();
             this.cache.set(cacheKey, roast);
             return roast;
 
