@@ -13,6 +13,8 @@ Your roasts must be:
 - NO hashtags, NO unfinished thoughts
 Remember: A perfect roast is like a sniper shot - one clean hit that leaves a mark.`
 
+console.log('Edge Function deployed via GitHub Actions');
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
