@@ -1,7 +1,17 @@
+/** @typedef {Object} AIConfig
+ * @property {string} OPENAI_API_URL - The OpenAI API endpoint
+ * @property {string} OPENAI_API_KEY - The OpenAI API key
+ * @property {string} SYSTEM_PROMPT - The system prompt for roast generation
+ * @property {Object} MODEL_PARAMS - The model parameters
+ */
+
+/** Class representing the AI service for roast generation */
 class AIService {
     constructor() {
         console.log('=== AIService Constructor Start ===');
+        /** @type {AIConfig} */
         this.config = window.AI_CONFIG;
+        /** @type {Map<string, string>} */
         this.cache = new Map();
         console.log('Config loaded:', {
             hasConfig: !!this.config,
@@ -11,6 +21,12 @@ class AIService {
         console.log('=== AIService Constructor End ===');
     }
 
+    /**
+     * Generates a roast for a LinkedIn post
+     * @param {string} postText - The LinkedIn post text to roast
+     * @returns {Promise<string>} The generated roast
+     * @throws {Error} If the post is empty or API call fails
+     */
     async generateRoast(postText) {
         try {
             // Check cache first
