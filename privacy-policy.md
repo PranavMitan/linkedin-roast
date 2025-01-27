@@ -35,7 +35,7 @@ We prioritize your privacy and security by:
 We may update this privacy policy to reflect changes in our practices. We will notify users of any material changes through the extension or this page.
 
 ## Contact
-For privacy concerns or questions, please contact us at pranavmitannn@gmail.com
+For privacy concerns or questions, please contact us at officialpsmitan@gmail.com
 
 ## Consent
 By using the LinkedIn Roast extension, you consent to the privacy practices described in this policy. 
