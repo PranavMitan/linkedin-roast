@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="popup">
+        <div class="header">
+            <div class="title-container">
+                <img src="assets/icon-48.png" alt="LinkedIn Roast Icon" class="header-icon">
+                <h1>LinkedIn Roast</h1>
+            </div>
+            <button class="close-button">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <p class="description">
+            Tired of cringe LinkedIn posts? Let AI roast them for you. Click the button below to toggle roasting mode.
+        </p>
+
+        <button class="toggle-button">
+            <span class="button-text">ENABLE ROASTING</span>
+        </button>
+
+        <div class="loading-indicator" style="display: none;">
+            <span class="material-icons">autorenew</span>
+            <span class="loading-text">Generating roast...</span>
+        </div>
+
+        <div class="footer">
+            Built by <a href="https://twitter.com/pranavmitannn" target="_blank">Pranav</a>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html> 
